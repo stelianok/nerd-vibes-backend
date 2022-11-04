@@ -6,13 +6,15 @@ import { UpdateProductDto } from './dto/update-product.dto';
 @Injectable()
 export class ProductsService {
   constructor(private prisma: PrismaService) { }
-  create(createProductDto: CreateProductDto) {
+  create(createProductDto: CreateProductDto[]) {
 
-    if (!createProductDto.images) {
-      createProductDto.images = [];
-    }
+    createProductDto.map((product) => {
+      if (!product.images) {
+        product.images = [];
+      }
+    });
 
-    return this.prisma.product.create({ data: createProductDto });
+    return this.prisma.product.createMany({ data: createProductDto });
   }
 
   findAll() {
