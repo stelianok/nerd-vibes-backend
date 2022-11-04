@@ -15,7 +15,7 @@ This is the backend of a fictional ecommerce focused on selling "geek" goods. Cu
 ## Installation
 
 ```bash
-$ npm install
+$ yarn install
 ```
 
 ## Running the app
